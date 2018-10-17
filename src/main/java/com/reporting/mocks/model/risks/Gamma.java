@@ -29,7 +29,7 @@ public class Gamma extends Risk {
               Underlying underlying,
               Double value) {
         super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
-        this.riskType = RiskType.PV;
+        this.riskType = RiskType.GAMMA;
         this.kvp.put(this.nameUnderlying, underlying);
         this.kvp.put(this.nameValue, value);
     }
