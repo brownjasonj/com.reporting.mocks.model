@@ -17,6 +17,8 @@ public class RiskResult {
     protected List<Risk> results;
     protected boolean isDeleteEvent;               // true if the contained results are a consequence of trades being removed
 
+    protected RiskResult() {}
+
     public RiskResult(CalculationContextId calculationContextId,
                       TradePopulationId tradePopulationId,
                       RiskRunId riskRunId,
