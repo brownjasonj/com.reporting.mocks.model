@@ -4,6 +4,8 @@ public class IntradayRiskType {
     protected RiskType riskType;
     protected int periodicity;
 
+    protected IntradayRiskType() {}
+
     public IntradayRiskType(RiskType riskType, int periodicity) {
         this.riskType = riskType;
         this.periodicity = periodicity;
