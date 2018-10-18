@@ -1,12 +1,8 @@
 package com.reporting.mocks.model.risks;
 
-import com.reporting.mocks.model.id.CalculationContextId;
 import com.reporting.mocks.model.id.MarketEnvId;
-import com.reporting.mocks.model.id.RiskRunId;
-import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.trade.Tcn;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 /*
@@ -33,14 +29,11 @@ public class Vega extends Risk {
         super(r);
     }
 
-    public Vega(CalculationContextId calculationId,
-                MarketEnvId marketEnvId,
-                TradePopulationId tradePopulationId,
-                RiskRunId riskRunId,
+    public Vega(MarketEnvId marketEnvId,
                 String bookName,
                 Tcn tcn,
                 List<String> bucketNames) {
-        super(calculationId, marketEnvId, tradePopulationId, riskRunId, bookName, tcn);
+        super(marketEnvId, bookName, tcn);
         this.riskType = RiskType.VEGA;
         this.kvp.put(this.nameTimeBuckets, bucketNames);    }
 
