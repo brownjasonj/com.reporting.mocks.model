@@ -43,10 +43,6 @@ public class Trade {
         this(kind, tradeType, new Tcn(), book, quantity, underlying1);
     }
 
-//    public Trade(TradeKind kind, TradeType tradeType, String book) {
-//        this(kind, tradeType, new Tcn(), book, 0.0);
-//    }
-
     public Trade(Trade trade) {
         this(trade.getKind(), trade.getTradeType(), trade.getTcn().createNewVersion(), trade.getBook(), trade.underlying1Amount, trade.underlying1);
     }
@@ -87,7 +83,13 @@ public class Trade {
         return underlying1;
     }
 
+    public boolean hasExpired(Date asOf) { return false; }
+
+    public Map<String, Double> getNotionals() { return null; }
+
     public int getVersion() { return this.tcn.getVersion(); }
+
+    public boolean isModifiable() { return true; }
 
     @Override
     public String toString() {

@@ -48,4 +48,6 @@ public class Risk {
     public RiskType getRiskType() {
         return riskType;
     }
+
+    public MarketEnvId getMarketEnvId() { return this.marketEnvId; }
 }
