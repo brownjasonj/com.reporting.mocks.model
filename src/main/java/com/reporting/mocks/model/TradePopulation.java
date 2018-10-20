@@ -12,7 +12,7 @@ public class TradePopulation {
     protected TradePopulationId tradePopulationId;
     protected String pricingGroupName;
     protected ConcurrentHashMap<UUID, Trade> tcnTrades;
-    protected ConcurrentHashMap<TradeType, ArrayList<Trade>> tradeTypeTrades;
+    protected ConcurrentHashMap<TradeType, List<Trade>> tradeTypeTrades;
     protected Date asOf;
     protected DataMarkerType type;
 
@@ -28,6 +28,8 @@ public class TradePopulation {
     }
 
     public List<Trade> getByTradeType(TradeType tradeType) { return this.tradeTypeTrades.get(tradeType);}
+
+    public Map<TradeType, List<Trade>> tradeTypeToTradeMapping() { return this.tradeTypeTrades; }
 
     public List<TradeType> getAllTradeTypes() {
         return Collections.list(tradeTypeTrades.keys());
