@@ -14,6 +14,7 @@ public class Risk {
     protected String bookName;
     protected Tcn tcn;
     protected RiskType riskType;
+    protected RiskKind riskKind;
 
     protected Map<String, Object> kvp;  // set of key-value pairs representing the risk
 

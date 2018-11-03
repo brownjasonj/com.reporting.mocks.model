@@ -1,31 +1,50 @@
 package com.reporting.mocks.model;
 
+import com.reporting.mocks.model.id.CalculationContextId;
 import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.risks.Risk;
 
-public class RiskResult<R extends Risk> {
+import java.util.List;
+
+public class RiskResultSet {
+    protected CalculationContextId calculationContextId;
     protected TradePopulationId tradePopulationId;
     protected RiskRunId riskRunId;
     protected int fragmentCount;
     protected int fragmentNo;
-    protected R risk;
+    protected List<Risk> results;
     protected boolean isDeleteEvent;               // true if the contained results are a consequence of trades being removed
 
-    protected RiskResult() {}
+    protected RiskResultSet() {}
 
-    public RiskResult(RiskRunId riskRunId,
+    public RiskResultSet(CalculationContextId calculationContextId,
                          TradePopulationId tradePopulationId,
+                         RiskRunId riskRunId,
                          int fragmentCount,
                          int fragmentNo,
-                         R risk,
+                         List<Risk> results,
                          boolean isDeleteEvent) {
-        this.riskRunId = riskRunId;
+        this.calculationContextId = calculationContextId;
         this.tradePopulationId = tradePopulationId;
+        this.riskRunId = riskRunId;
         this.fragmentCount = fragmentCount;
         this.fragmentNo = fragmentNo;
-        this.risk = risk;
+        this.results = results;
         this.isDeleteEvent = isDeleteEvent;
+    }
+
+
+    public RiskResultSet(CalculationContextId calculationContextId,
+                         TradePopulationId tradePopulationId,
+                         RiskRunId riskRunId,
+                         List<Risk> results,
+                         boolean isDeleteEvent) {
+        this(calculationContextId, tradePopulationId, riskRunId, 1, 0, results, isDeleteEvent);
+    }
+
+    public CalculationContextId getCalculationContextId() {
+        return calculationContextId;
     }
 
     public TradePopulationId getTradePopulationId() {
@@ -44,8 +63,8 @@ public class RiskResult<R extends Risk> {
         return fragmentNo;
     }
 
-    public R getRisk() {
-        return risk;
+    public List<Risk> getResults() {
+        return results;
     }
 
     public boolean isDeleteEvent() {
