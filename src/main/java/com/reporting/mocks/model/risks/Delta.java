@@ -10,6 +10,7 @@ public class Delta extends Risk {
 
     public Delta() {
         super();
+        this.riskKind = RiskKind.SINGLE;
         this.riskType = RiskType.DELTA;
     }
 
@@ -18,8 +19,7 @@ public class Delta extends Risk {
     }
 
     public Delta(MarketEnvId marketEnvId, String bookName, Tcn tcn, Underlying underlying, Double value) {
-        super(marketEnvId, bookName, tcn);
-        this.riskType = RiskType.DELTA;
+        super(RiskKind.SINGLE, RiskType.DELTA, marketEnvId, bookName, tcn);
         this.kvp.put(this.nameValue, value);
         this.kvp.put(this.nameUnderlying, underlying);
     }

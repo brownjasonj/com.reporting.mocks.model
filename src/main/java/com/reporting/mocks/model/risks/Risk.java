@@ -31,7 +31,9 @@ public class Risk {
         this.kvp = r.kvp;
     }
 
-    public Risk(MarketEnvId marketEnvId, String bookName, Tcn tcn) {
+    public Risk(RiskKind riskKind, RiskType riskType, MarketEnvId marketEnvId, String bookName, Tcn tcn) {
+        this.riskKind = riskKind;
+        this.riskType = riskType;
         this.kvp = new HashMap<>();
         this.marketEnvId = marketEnvId;
         this.bookName = bookName;
@@ -48,6 +50,14 @@ public class Risk {
 
     public RiskType getRiskType() {
         return riskType;
+    }
+
+    public RiskKind getRiskKind() {
+        return riskKind;
+    }
+
+    public Map<String, Object> getKvp() {
+        return kvp;
     }
 
     public MarketEnvId getMarketEnvId() { return this.marketEnvId; }

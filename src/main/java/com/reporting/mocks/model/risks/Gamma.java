@@ -10,6 +10,7 @@ public class Gamma extends Risk {
 
     public Gamma() {
         super();
+        this.riskKind = RiskKind.SINGLE;
         this.riskType = RiskType.GAMMA;
     }
 
@@ -22,8 +23,7 @@ public class Gamma extends Risk {
               Tcn tcn,
               Underlying underlying,
               Double value) {
-        super(marketEnvId, bookName, tcn);
-        this.riskType = RiskType.GAMMA;
+        super(RiskKind.SINGLE, RiskType.GAMMA, marketEnvId, bookName, tcn);
         this.kvp.put(this.nameUnderlying, underlying);
         this.kvp.put(this.nameValue, value);
     }

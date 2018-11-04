@@ -10,6 +10,7 @@ public class Pv extends Risk {
 
     public Pv() {
         super();
+        this.riskKind = RiskKind.SINGLE;
         this.riskType = RiskType.PV;
     }
 
@@ -19,8 +20,7 @@ public class Pv extends Risk {
               Tcn tcn,
               Underlying currency,
               Double value) {
-        super(marketEnvId, bookName, tcn);
-        this.riskType = RiskType.PV;
+        super(RiskKind.SINGLE, RiskType.PV, marketEnvId, bookName, tcn);
         this.kvp.put(this.nameUnderlying, currency);
         this.kvp.put(this.nameValue, value);
     }
