@@ -16,25 +16,26 @@ public class Risk {
     protected RiskType riskType;
     protected RiskKind riskKind;
 
-    protected Map<String, Object> kvp;  // set of key-value pairs representing the risk
+    // protected Map<String, Object> kvp;  // set of key-value pairs representing the risk
 
     public Risk() {
 
     }
 
     protected Risk(Risk r) {
-        this.kvp = new HashMap<>();
+        this.riskKind = r.riskKind;
+        this.riskType = r.riskType;
+//        this.kvp = new HashMap<>();
         this.marketEnvId = r.marketEnvId;
         this.bookName = r.bookName;
         this.tcn = r.tcn;
-        this.riskType = r.riskType;
-        this.kvp = r.kvp;
+//        this.kvp = r.kvp;
     }
 
     public Risk(RiskKind riskKind, RiskType riskType, MarketEnvId marketEnvId, String bookName, Tcn tcn) {
         this.riskKind = riskKind;
         this.riskType = riskType;
-        this.kvp = new HashMap<>();
+//        this.kvp = new HashMap<>();
         this.marketEnvId = marketEnvId;
         this.bookName = bookName;
         this.tcn = tcn;
@@ -56,9 +57,9 @@ public class Risk {
         return riskKind;
     }
 
-    public Map<String, Object> getKvp() {
-        return kvp;
-    }
+//    public Map<String, Object> getKvp() {
+//        return kvp;
+//    }
 
     public MarketEnvId getMarketEnvId() { return this.marketEnvId; }
 }

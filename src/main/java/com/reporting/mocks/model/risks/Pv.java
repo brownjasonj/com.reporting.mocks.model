@@ -5,8 +5,8 @@ import com.reporting.mocks.model.trade.Tcn;
 import com.reporting.mocks.model.underlying.Underlying;
 
 public class Pv extends Risk {
-    private final String nameValue = "value";
-    private final String nameUnderlying = "underlying";
+    private Underlying underlying;
+    private Double value;
 
     public Pv() {
         super();
@@ -21,19 +21,21 @@ public class Pv extends Risk {
               Underlying currency,
               Double value) {
         super(RiskKind.SINGLE, RiskType.PV, marketEnvId, bookName, tcn);
-        this.kvp.put(this.nameUnderlying, currency);
-        this.kvp.put(this.nameValue, value);
+        this.underlying = currency;
+        this.value = value;
     }
 
-    public Pv(Risk r) {
+    public Pv(Pv r) {
         super(r);
-    }
-
-    public Double getValue() {
-        return (Double)this.kvp.get(this.nameValue);
+        this.underlying = r.getUnderlying();
+        this.value = r.getValue();
     }
 
     public Underlying getUnderlying() {
-        return (Underlying)this.kvp.get(this.nameUnderlying);
+        return underlying;
+    }
+
+    public Double getValue() {
+        return value;
     }
 }

@@ -4,21 +4,21 @@ import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.risks.Risk;
 
-public class RiskResult {
+public class RiskResult<R extends Risk>{
     protected TradePopulationId tradePopulationId;
     protected RiskRunId riskRunId;
     protected int fragmentCount;
     protected int fragmentNo;
-    protected Risk risk;
+    protected R risk;
     protected boolean isDeleteEvent;               // true if the contained results are a consequence of trades being removed
 
-    protected RiskResult() {}
+    public RiskResult() {}
 
     public RiskResult(RiskRunId riskRunId,
                          TradePopulationId tradePopulationId,
                          int fragmentCount,
                          int fragmentNo,
-                         Risk risk,
+                         R risk,
                          boolean isDeleteEvent) {
         this.riskRunId = riskRunId;
         this.tradePopulationId = tradePopulationId;
@@ -44,7 +44,7 @@ public class RiskResult {
         return fragmentNo;
     }
 
-    public Risk getRisk() {
+    public R getRisk() {
         return risk;
     }
 

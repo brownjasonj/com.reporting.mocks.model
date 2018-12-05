@@ -5,8 +5,8 @@ import com.reporting.mocks.model.trade.Tcn;
 import com.reporting.mocks.model.underlying.Underlying;
 
 public class Delta extends Risk {
-    protected final String nameValue = "value";
-    protected final String nameUnderlying = "underlying";
+    private Underlying underlying;
+    private Double value;
 
     public Delta() {
         super();
@@ -14,21 +14,23 @@ public class Delta extends Risk {
         this.riskType = RiskType.DELTA;
     }
 
-    public Delta(Risk r) {
+    public Delta(Delta r) {
         super(r);
+        this.underlying = r.getUnderlying();
+        this.value = r.getValue();
     }
 
     public Delta(MarketEnvId marketEnvId, String bookName, Tcn tcn, Underlying underlying, Double value) {
         super(RiskKind.SINGLE, RiskType.DELTA, marketEnvId, bookName, tcn);
-        this.kvp.put(this.nameValue, value);
-        this.kvp.put(this.nameUnderlying, underlying);
-    }
-
-    public Double getValue() {
-        return (Double)this.kvp.get(this.nameValue);
+        this.underlying = underlying;
+        this.value = value;
     }
 
     public Underlying getUnderlying() {
-        return (Underlying)this.kvp.get(this.nameUnderlying);
+        return underlying;
+    }
+
+    public Double getValue() {
+        return value;
     }
 }

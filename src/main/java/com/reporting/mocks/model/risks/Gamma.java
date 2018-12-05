@@ -5,8 +5,8 @@ import com.reporting.mocks.model.trade.Tcn;
 import com.reporting.mocks.model.underlying.Underlying;
 
 public class Gamma extends Risk {
-    private final String nameValue = "value";
-    private final String nameUnderlying = "underlying";
+    private Underlying underlying;
+    private Double value;
 
     public Gamma() {
         super();
@@ -14,8 +14,10 @@ public class Gamma extends Risk {
         this.riskType = RiskType.GAMMA;
     }
 
-    public Gamma(Risk r) {
+    public Gamma(Gamma r) {
         super(r);
+        this.underlying = r.getUnderlying();
+        this.value = r.getValue();
     }
 
     public Gamma(MarketEnvId marketEnvId,
@@ -24,7 +26,15 @@ public class Gamma extends Risk {
               Underlying underlying,
               Double value) {
         super(RiskKind.SINGLE, RiskType.GAMMA, marketEnvId, bookName, tcn);
-        this.kvp.put(this.nameUnderlying, underlying);
-        this.kvp.put(this.nameValue, value);
+        this.underlying = underlying;
+        this.value = value;
+    }
+
+    public Underlying getUnderlying() {
+        return underlying;
+    }
+
+    public Double getValue() {
+        return value;
     }
 }
