@@ -7,8 +7,8 @@ import com.reporting.mocks.model.risks.RiskType;
 import com.reporting.mocks.model.underlying.Underlying;
 
 public class PvAgg extends RiskAggregate {
-    private final String nameValue = "value";
-    private final String nameUnderlying = "underlying";
+    private Underlying underlying;
+    private Double value;
 
     public PvAgg() {
         super();
@@ -21,17 +21,27 @@ public class PvAgg extends RiskAggregate {
                  Underlying currency,
                  Double value) {
         super(marketEnvId, riskRunId, bookName, RiskType.PV);
-        this.kvp.put(this.nameUnderlying, currency);
-        this.kvp.put(this.nameValue, value);
+        this.underlying = currency;
+        this.value = value;
     }
 
-    public void addValue(Double valueToAdd) { this.kvp.put(this.nameValue, (Double)this.kvp.get(this.nameValue) + valueToAdd);}
-    public Double getValue() {
-        return (Double)this.kvp.get(this.nameValue);
+    public void addValue(Double valueToAdd) {
+        this.value += valueToAdd;
     }
 
     public Underlying getUnderlying() {
-        return (Underlying)this.kvp.get(this.nameUnderlying);
+        return underlying;
     }
 
+    public void setUnderlying(Underlying underlying) {
+        this.underlying = underlying;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
 }

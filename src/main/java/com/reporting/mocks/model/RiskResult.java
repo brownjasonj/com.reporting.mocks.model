@@ -1,10 +1,12 @@
 package com.reporting.mocks.model;
 
+import com.reporting.mocks.model.id.MarketEnvId;
 import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.risks.Risk;
 
 public class RiskResult<R extends Risk>{
+    protected MarketEnvId marketEnvId;
     protected TradePopulationId tradePopulationId;
     protected RiskRunId riskRunId;
     protected int fragmentCount;
@@ -15,17 +17,23 @@ public class RiskResult<R extends Risk>{
     public RiskResult() {}
 
     public RiskResult(RiskRunId riskRunId,
+                         MarketEnvId marketEnvId,
                          TradePopulationId tradePopulationId,
                          int fragmentCount,
                          int fragmentNo,
                          R risk,
                          boolean isDeleteEvent) {
         this.riskRunId = riskRunId;
+        this.marketEnvId = marketEnvId;
         this.tradePopulationId = tradePopulationId;
         this.fragmentCount = fragmentCount;
         this.fragmentNo = fragmentNo;
         this.risk = risk;
         this.isDeleteEvent = isDeleteEvent;
+    }
+
+    public MarketEnvId getMarketEnvId() {
+        return marketEnvId;
     }
 
     public TradePopulationId getTradePopulationId() {

@@ -15,9 +15,7 @@ public class RiskAggregate {
     protected RiskType riskType;
     protected RiskKind riskKind;
 
-    protected Map<String, Object> kvp;  // set of key-value pairs representing the risk
-
-    public RiskAggregate() { kvp = new HashMap<>(); }
+    public RiskAggregate() {}
 
     public RiskAggregate(MarketEnvId marketEnvId, RiskRunId riskRunId, String bookName, RiskType riskType) {
         this.marketEnvId = marketEnvId;
@@ -25,7 +23,6 @@ public class RiskAggregate {
         this.bookName = bookName;
         this.riskType = riskType;
         this.riskKind = RiskKind.AGGREGATE;
-        this.kvp = new HashMap<>();
     }
 
     public MarketEnvId getMarketEnvId() {
@@ -48,7 +45,23 @@ public class RiskAggregate {
         return riskKind;
     }
 
-    public Map<String,Object> getKvp() { return this.kvp; }
+    public void setMarketEnvId(MarketEnvId marketEnvId) {
+        this.marketEnvId = marketEnvId;
+    }
 
-    public void setKvp(Map<String, Object> kvp) { this.kvp = kvp; }
+    public void setRiskRunId(RiskRunId riskRunId) {
+        this.riskRunId = riskRunId;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public void setRiskType(RiskType riskType) {
+        this.riskType = riskType;
+    }
+
+    public void setRiskKind(RiskKind riskKind) {
+        this.riskKind = riskKind;
+    }
 }
