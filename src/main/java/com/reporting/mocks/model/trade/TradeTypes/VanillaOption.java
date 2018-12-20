@@ -11,9 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VanillaOption extends Trade {
-    private final String underlying2 = "underlying2";
-    private final String expiryDate = "expiryDate";
-    private final String strike = "strike";
+    private Underlying underlying2;
+    private Date expiryDate;
+    private Double strike;
 
     public VanillaOption() {
         super();
@@ -27,9 +27,9 @@ public class VanillaOption extends Trade {
                             Date expiryDate,
                             Double strike) {
         super(TradeKind.Any, TradeType.VanillaOption, tcn, book, quantity, underlying1);
-        this.assignAttribute(this.underlying2, underlying2);
-        this.assignAttribute(this.expiryDate, expiryDate);
-        this.assignAttribute(this.strike, strike);
+        this.underlying2 = underlying2;
+        this.expiryDate = expiryDate;
+        this.strike = strike;
     }
 
     public VanillaOption(
@@ -65,15 +65,15 @@ public class VanillaOption extends Trade {
     }
 
     public Underlying getUnderlying2() {
-        return (Underlying)this.retreiveAttribute(this.underlying2);
+        return underlying2;
     }
 
     public Date getExpiryDate() {
-        return (Date)this.retreiveAttribute(this.expiryDate);
+        return expiryDate;
     }
 
     public Double getStrike() {
-        return (Double)this.retreiveAttribute(this.strike);
+        return strike;
     }
 
     public Double getUnderlying2Amount() {

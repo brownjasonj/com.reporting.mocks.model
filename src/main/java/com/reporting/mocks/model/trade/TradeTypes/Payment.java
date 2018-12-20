@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Payment extends Trade {
-    protected final String settlementDate = "settlementDate";
+    private Date settlementDate;
 
     public Payment() {
         super();
@@ -22,7 +22,7 @@ public class Payment extends Trade {
             Date settlementDate
     ) {
         super(TradeKind.Any, TradeType.Payment, tcn, book, underlyingAmount1, underlying1);
-        this.assignAttribute(this.settlementDate, settlementDate);
+        this.settlementDate = settlementDate;
     }
 
     public Payment(String book, Double underlyingAmount1, Underlying underlying1, Date settlementDate) {
@@ -43,7 +43,7 @@ public class Payment extends Trade {
     }
 
     public Date getSettlementDate() {
-        return (Date)this.retreiveAttribute(this.settlementDate);
+        return settlementDate;
     }
 
     @Override

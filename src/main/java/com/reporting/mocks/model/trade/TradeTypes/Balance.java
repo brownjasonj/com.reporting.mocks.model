@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Balance extends Trade {
-    protected final String settlementDate = "settlementDate";
+    private Date settlementDate;
 
     public Balance() {
         super();
@@ -25,7 +25,7 @@ public class Balance extends Trade {
             Date settlementDate
     ) {
         super(TradeKind.Any, TradeType.Balance, tcn, book, underlyingAmount1, underlying1);
-        this.assignAttribute(this.settlementDate, settlementDate);
+        this.settlementDate = settlementDate;
     }
 
     public Balance(String book, Double underlyingAmount1, Underlying underlying1, Date settlementDate) {
@@ -46,7 +46,7 @@ public class Balance extends Trade {
     }
 
     public Date getSettlementDate() {
-        return (Date)this.retreiveAttribute(this.settlementDate);
+        return this.settlementDate;
     }
 
     @Override

@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BarrierOption extends Trade {
-    private final String underlying2 = "underlying2";
-    private final String expiryDate = "expiryDate";
-    private final String strike = "strike";
-    private final String barrier = "barrier";
+    private Underlying underlying2;
+    private Date expiryDate;
+    private Double strike;
+    private Double barrier;
 
     public BarrierOption() {
         super();
@@ -29,10 +29,10 @@ public class BarrierOption extends Trade {
                             Double strike,
                             Double barrier) {
         super(TradeKind.Any, TradeType.BarrierOption, tcn, book, quantity, underlying1);
-        this.assignAttribute(this.underlying2, underlying2);
-        this.assignAttribute(this.expiryDate, expiryDate);
-        this.assignAttribute(this.strike, strike);
-        this.assignAttribute(this.barrier, barrier);
+        this.underlying2 = underlying2;
+        this.expiryDate = expiryDate;
+        this.strike = strike;
+        this.barrier = barrier;
     }
 
     public BarrierOption(String book,
@@ -68,23 +68,23 @@ public class BarrierOption extends Trade {
     }
 
     public Underlying getUnderlying2() {
-        return (Underlying)this.retreiveAttribute(this.underlying2);
+        return underlying2;
+    }
+
+    public Date getExpiryDate() {
+        return expiryDate;
+    }
+
+    public Double getStrike() {
+        return strike;
+    }
+
+    public Double getBarrier() {
+        return barrier;
     }
 
     public Double getUnderlying2Amount() {
         return this.getUnderlying1Amount() * this.getStrike() * -1;
-    }
-
-    public Date getExpiryDate() {
-        return (Date)this.retreiveAttribute(this.expiryDate);
-    }
-
-    public Double getStrike() {
-        return (Double)this.retreiveAttribute(this.strike);
-    }
-
-    public Double getBarrier() {
-        return (Double)this.retreiveAttribute(this.barrier);
     }
 
     @Override

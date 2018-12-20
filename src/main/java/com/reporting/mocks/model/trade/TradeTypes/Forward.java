@@ -11,9 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Forward extends Trade {
-    protected final String underlying2 = "underlying2";
-    protected final String settlementDate = "settlementDate";
-    protected final String price = "price";
+    private Underlying underlying2;
+    private Date settlementDate;
+    private Double price;
 
     public Forward() {
         super();
@@ -28,9 +28,9 @@ public class Forward extends Trade {
             Date settlementDate,
             Double price) {
         super(TradeKind.Any, TradeType.Forward, tcn, book, underlying1Amount, underlying1);
-        this.assignAttribute(this.underlying2, underlying2);
-        this.assignAttribute(this.settlementDate, settlementDate);
-        this.assignAttribute(this.price, price);
+        this.underlying2 = underlying2;
+        this.settlementDate = settlementDate;
+        this.price = price;
     }
 
     public Forward(String book,
@@ -58,15 +58,15 @@ public class Forward extends Trade {
     }
 
     public Underlying getUnderlying2() {
-        return (Underlying)this.retreiveAttribute(this.underlying2);
+        return underlying2;
     }
 
     public Date getSettlementDate() {
-        return (Date)this.retreiveAttribute(this.settlementDate);
+        return settlementDate;
     }
 
     public Double getPrice() {
-        return (Double)this.retreiveAttribute(this.price);
+        return price;
     }
 
     public Double getUnderlying2Amount() {

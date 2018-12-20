@@ -11,9 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Spot extends Trade {
-    private final String underlying2 = "underlying2";
-    private final String settlementDate = "settlementDate";
-    private final String price = "price";
+    private Underlying underlying2;
+    private Date settlementDate;
+    private Double price;
 
     public Spot() {
         super();
@@ -29,9 +29,9 @@ public class Spot extends Trade {
             Double price
     ){
         super(TradeKind.Any, TradeType.Spot, tcn, book, underlyingAmount1, underlying1);
-        this.assignAttribute(this.underlying2, underlying2);
-        this.assignAttribute(this.settlementDate, settlementDate);
-        this.assignAttribute(this.price, price);
+        this.underlying2 = underlying2;
+        this.settlementDate = settlementDate;
+        this.price = price;
     }
     public Spot(String book, Double underlyingAmount1, Underlying underlying1, Underlying underlying2, Date settlementDate, Double price) {
         this(book, new Tcn(), underlyingAmount1, underlying1, underlying2, settlementDate, price);
@@ -60,15 +60,15 @@ public class Spot extends Trade {
     }
 
     public Underlying getUnderlying2() {
-        return (Underlying)this.retreiveAttribute(this.underlying2);
+        return underlying2;
     }
 
     public Date getSettlementDate() {
-        return (Date)this.retreiveAttribute(this.settlementDate);
+        return settlementDate;
     }
 
     public Double getPrice() {
-        return (Double)this.retreiveAttribute(this.price);
+        return price;
     }
 
     public Double getUnderlying2Amount() {

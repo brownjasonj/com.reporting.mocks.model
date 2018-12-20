@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Swap extends Trade {
-    private final String underlying2 = "underlying2";
-    private final String nearSettlementDate = "nearSettlementDate";
-    private final String farSettlementDate = "farSettlementDate";
-    private final String price = "price";
+    private Underlying underlying2;
+    private Date nearSettlementDate;
+    private Date farSettlementDate;
+    private Double price;
 
     public Swap() {
         super();
@@ -30,10 +30,10 @@ public class Swap extends Trade {
             Date farSettlementDate,
             Double price) {
         super(TradeKind.Any, TradeType.Swap, tcn, book, quantity, underlying1);
-        this.assignAttribute(this.underlying2, underlying2);
-        this.assignAttribute(this.nearSettlementDate, nearSettlementDate);
-        this.assignAttribute(this.farSettlementDate, farSettlementDate);
-        this.assignAttribute(this.price, price);
+        this.underlying2 = underlying2;
+        this.nearSettlementDate = nearSettlementDate;
+        this.farSettlementDate = farSettlementDate;
+        this.price = price;
     }
 
     public Swap(
@@ -71,15 +71,19 @@ public class Swap extends Trade {
     }
 
     public Underlying getUnderlying2() {
-        return (Underlying)this.retreiveAttribute(this.underlying2);
+        return underlying2;
     }
 
-    public Date getNearSettlementDate() { return (Date)this.retreiveAttribute(this.nearSettlementDate); }
+    public Date getNearSettlementDate() {
+        return nearSettlementDate;
+    }
 
-    public Date getFarSettlementDate() { return (Date)this.retreiveAttribute(this.farSettlementDate); }
+    public Date getFarSettlementDate() {
+        return farSettlementDate;
+    }
 
     public Double getPrice() {
-        return (Double)this.retreiveAttribute(this.price);
+        return price;
     }
 
     public Double getUnderlying2Amount() {
