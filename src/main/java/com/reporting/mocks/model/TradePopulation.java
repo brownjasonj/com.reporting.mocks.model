@@ -23,6 +23,8 @@ public class TradePopulation {
         return this.tradePopulationId;
     }
 
+    public String getPricingGroupName() { return this.pricingGroupName; }
+
     public Collection<Trade> getAllTrades() {
         return this.tcnTrades.values();
     }

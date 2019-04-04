@@ -12,13 +12,18 @@ public class TradePopulationMutable extends TradePopulation {
     public TradePopulationMutable() {
         super();
     }
-    public TradePopulationMutable(String pricingGroupName, DataMarkerType type) {
+
+    public TradePopulationMutable(TradePopulationId tradePopulationId, String pricingGroupName, DataMarkerType type, Date asOf) {
         this.pricingGroupName = pricingGroupName;
-        this.tradePopulationId = new TradePopulationId(pricingGroupName);
+        this.asOf = asOf;
+        this.type = type;
+        this.tradePopulationId = tradePopulationId;
         this.tcnTrades = new ConcurrentHashMap<>();
         this.tradeTypeTrades = new ConcurrentHashMap<>();
-        this.asOf = new Date();
-        this.type = type;
+    }
+
+    public TradePopulationMutable(String pricingGroupName, DataMarkerType type) {
+        this(new TradePopulationId(pricingGroupName), pricingGroupName, type, new Date());
     }
 
     public TradePopulationMutable(TradePopulationMutable tradePopulation, DataMarkerType type) {
