@@ -34,4 +34,6 @@ public abstract class Id {
 
     public String getLocator() { return locator; }
 
+    public String toString() { return id.toString(); }
+
 }

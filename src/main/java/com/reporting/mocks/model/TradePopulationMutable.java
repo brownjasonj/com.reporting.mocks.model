@@ -40,16 +40,18 @@ public class TradePopulationMutable extends TradePopulation {
 
     public Trade add(Trade trade) {
         List<Trade> trades;
-        TradeType tradeType = trade.getTradeType();
-        if (!tradeTypeTrades.containsKey(tradeType)) {
-            trades = new ArrayList<>();
-            tradeTypeTrades.put(tradeType, trades);
+        String tcnName = trade.getTcn().toString();
+        if (!tcnTrades.containsKey(tcnName)) {
+            TradeType tradeType = trade.getTradeType();
+            if (!tradeTypeTrades.containsKey(tradeType)) {
+                trades = new ArrayList<>();
+                tradeTypeTrades.put(tradeType, trades);
+            } else {
+                trades = tradeTypeTrades.get(trade.getTradeType());
+            }
+            tcnTrades.put(tcnName, trade);
+            trades.add(trade);
         }
-        else {
-            trades = tradeTypeTrades.get(trade.getTradeType());
-        }
-        tcnTrades.put(trade.getTcn().getId(), trade);
-        trades.add(trade);
         return trade;
     }
 
@@ -62,13 +64,13 @@ public class TradePopulationMutable extends TradePopulation {
     }
 
     public Trade delete(Tcn tcn) {
-        if (this.tcnTrades.containsKey(tcn.getId())) {
-            Trade trade = this.tcnTrades.get(tcn.getId());
+        if (this.tcnTrades.containsKey(tcn.toString())) {
+            Trade trade = this.tcnTrades.get(tcn.toString());
             // check that the version of the given tcn is the same as the trade
             if (trade.getTcn().getVersion() == tcn.getVersion()) {
                 List<Trade> trades = this.tradeTypeTrades.get(trade.getTradeType());
                 if (trades.remove(trade))
-                    return this.tcnTrades.remove(tcn.getId());
+                    return this.tcnTrades.remove(tcn.toString());
             }
         }
         return null;

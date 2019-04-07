@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TradePopulation {
     protected TradePopulationId tradePopulationId;
     protected String pricingGroupName;
-    protected ConcurrentHashMap<UUID, Trade> tcnTrades;
+    protected ConcurrentHashMap<String, Trade> tcnTrades;
     protected ConcurrentHashMap<TradeType, List<Trade>> tradeTypeTrades;
     protected Date asOf;
     protected DataMarkerType type;
@@ -50,7 +50,7 @@ public class TradePopulation {
     }
 
     public Trade getTrade(Tcn tcn) {
-        if (this.tcnTrades.containsKey(tcn.getId())) {
+        if (this.tcnTrades.containsKey(tcn.toString())) {
             return this.tcnTrades.get(tcn.getId());
         }
         else {
