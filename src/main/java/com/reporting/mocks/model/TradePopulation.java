@@ -51,7 +51,7 @@ public class TradePopulation {
 
     public Trade getTrade(Tcn tcn) {
         if (this.tcnTrades.containsKey(tcn.toString())) {
-            return this.tcnTrades.get(tcn.getId());
+            return this.tcnTrades.get(tcn.toString());
         }
         else {
             return null;

@@ -5,9 +5,6 @@ import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.risks.RiskKind;
 import com.reporting.mocks.model.risks.RiskType;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class RiskAggregate {
     protected MarketEnvId marketEnvId;
     protected RiskRunId riskRunId;

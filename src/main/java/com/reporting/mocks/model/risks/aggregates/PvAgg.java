@@ -2,7 +2,6 @@ package com.reporting.mocks.model.risks.aggregates;
 
 import com.reporting.mocks.model.id.MarketEnvId;
 import com.reporting.mocks.model.id.RiskRunId;
-import com.reporting.mocks.model.risks.RiskKind;
 import com.reporting.mocks.model.risks.RiskType;
 import com.reporting.mocks.model.underlying.Underlying;
 

@@ -1,13 +1,7 @@
 package com.reporting.mocks.model.risks;
 
-import com.reporting.mocks.model.id.CalculationContextId;
 import com.reporting.mocks.model.id.MarketEnvId;
-import com.reporting.mocks.model.id.RiskRunId;
-import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.trade.Tcn;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Risk {
     protected MarketEnvId marketEnvId;
