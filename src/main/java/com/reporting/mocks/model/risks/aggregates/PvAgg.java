@@ -28,6 +28,10 @@ public class PvAgg extends RiskAggregate {
         this.value += valueToAdd;
     }
 
+    public void subtractValue(Double valueToSubtract) {
+        this.value -= valueToSubtract;
+    }
+
     public Underlying getUnderlying() {
         return underlying;
     }

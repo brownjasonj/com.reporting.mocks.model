@@ -5,16 +5,16 @@ import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.risks.RiskType;
 import com.reporting.mocks.model.underlying.Underlying;
 
-public class DeltaAgg extends RiskAggregate {
+public class GammaAgg extends RiskAggregate {
     private Underlying underlying;
     private Double value;
     
-    public DeltaAgg() {
+    public GammaAgg() {
         super();
-        this.riskType = RiskType.DELTA;
+        this.riskType = RiskType.GAMMA;
     }
 
-    public DeltaAgg(MarketEnvId marketEnvId,
+    public GammaAgg(MarketEnvId marketEnvId,
                  RiskRunId riskRunId,
                  String bookName,
                  Underlying currency,
