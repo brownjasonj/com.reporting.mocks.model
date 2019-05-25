@@ -20,8 +20,8 @@ import java.util.Map;
  */
 public class Vega extends Risk {
     private Underlying underlying;
-    private List<String> timeBuckets;
-    private Map<String,List<Double>> timeBucketValues;
+    protected List<String> timeBuckets;
+    protected Map<String,List<Double>> timeBucketValues;
 
     public Vega() {
         super();

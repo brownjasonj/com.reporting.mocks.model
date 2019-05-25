@@ -6,7 +6,7 @@ import com.reporting.mocks.model.underlying.Underlying;
 
 public class Gamma extends Risk {
     private Underlying underlying;
-    private Double value;
+    protected Double value;
 
     public Gamma() {
         super();

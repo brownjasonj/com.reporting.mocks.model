@@ -5,6 +5,7 @@ import com.reporting.mocks.model.id.RiskRunId;
 import com.reporting.mocks.model.risks.RiskType;
 import com.reporting.mocks.model.underlying.Underlying;
 
+@Deprecated
 public class PvAgg extends RiskAggregate {
     private Underlying underlying;
     private Double value;

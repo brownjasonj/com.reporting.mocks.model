@@ -1,26 +1,53 @@
-package com.reporting.mocks.model.risks.aggregates;
+package com.reporting.mocks.model.risks.aggregate;
+
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.reporting.mocks.model.id.MarketEnvId;
 import com.reporting.mocks.model.id.RiskRunId;
+import com.reporting.mocks.model.risks.Risk;
 import com.reporting.mocks.model.risks.RiskKind;
 import com.reporting.mocks.model.risks.RiskType;
+import com.reporting.mocks.model.trade.Tcn;
 
-@Deprecated
 public class RiskAggregate {
+    protected Date created;
+    protected Date lastUpdate;
     protected MarketEnvId marketEnvId;
     protected RiskRunId riskRunId;
     protected String bookName;
     protected RiskType riskType;
     protected RiskKind riskKind;
+    protected List<Tcn> tcns;
 
-    public RiskAggregate() {}
-
-    public RiskAggregate(MarketEnvId marketEnvId, RiskRunId riskRunId, String bookName, RiskType riskType) {
-        this.marketEnvId = marketEnvId;
-        this.riskRunId = riskRunId;
-        this.bookName = bookName;
-        this.riskType = riskType;
+    public RiskAggregate() {
         this.riskKind = RiskKind.AGGREGATE;
+        this.tcns = new LinkedList<>();
+        this.created = new Date();
+        this.lastUpdate = new Date();
+    }
+
+    public RiskAggregate(Risk risk) {
+        this();
+        this.marketEnvId = risk.getMarketEnvId();
+        this.bookName = risk.getBookName();
+        this.riskType = risk.getRiskType();
+        this.tcns.add(risk.getTcn());
+    }
+
+    public void updateTime() {
+        this.lastUpdate = new Date();
+    }
+
+    public void add(Risk r) {
+        this.tcns.add(r.getTcn());
+        this.updateTime();
+    }
+
+    public void subtract(Risk r) {
+        this.tcns.add(r.getTcn());
+        this.updateTime();
     }
 
     public MarketEnvId getMarketEnvId() {

@@ -6,7 +6,7 @@ import com.reporting.mocks.model.underlying.Underlying;
 
 public class Pv extends Risk {
     private Underlying underlying;
-    private Double value;
+    protected Double value;
 
     public Pv() {
         super();
