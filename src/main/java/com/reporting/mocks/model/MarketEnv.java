@@ -7,12 +7,14 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class MarketEnv {
+    protected Date timeStamp;
     protected MarketEnvId marketEnvId;
     protected Date asOf;
     protected PricingGroup pricingGroup;
     protected DataMarkerType type;
 
     public MarketEnv(PricingGroup pricingGroup, DataMarkerType type, int dayAdvance) {
+        this.timeStamp = new Date();
         this.marketEnvId= new MarketEnvId(pricingGroup.getName());
         this.asOf = Date.from(LocalDate.now().plusDays(dayAdvance).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
         this.pricingGroup = pricingGroup;
@@ -21,8 +23,6 @@ public class MarketEnv {
     public MarketEnv(PricingGroup pricingGroup, DataMarkerType type) {
         this(pricingGroup, type, 0);
     }
-
-
 
     public MarketEnvId getId() { return this.marketEnvId; }
 
@@ -36,5 +36,9 @@ public class MarketEnv {
 
     public DataMarkerType getType() {
         return type;
+    }
+
+    public Date getTimeStamp() {
+        return this.timeStamp;
     }
 }
