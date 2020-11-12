@@ -42,6 +42,6 @@ public class Tcn {
     
     @Override
     public String toString() {
-        return this.id + "." + this.version;
+        return this.id + "v" + this.version;
     }
 }
