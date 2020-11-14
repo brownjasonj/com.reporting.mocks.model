@@ -10,7 +10,6 @@ import com.reporting.mocks.model.risks.Risk;
 public class RiskResult<R extends Risk> {
     protected Date timeStamp;
     protected MarketEnvId marketEnvId;
-    protected TradePopulationId tradePopulationId;
     protected RiskRunId riskRunId;
     protected int fragmentCount;
     protected int fragmentNo;
@@ -21,7 +20,6 @@ public class RiskResult<R extends Risk> {
 
     public RiskResult(RiskRunId riskRunId,
                          MarketEnvId marketEnvId,
-                         TradePopulationId tradePopulationId,
                          int fragmentCount,
                          int fragmentNo,
                          R risk,
@@ -29,7 +27,6 @@ public class RiskResult<R extends Risk> {
         this.timeStamp = new Date();
         this.riskRunId = riskRunId;
         this.marketEnvId = marketEnvId;
-        this.tradePopulationId = tradePopulationId;
         this.fragmentCount = fragmentCount;
         this.fragmentNo = fragmentNo;
         this.risk = risk;
@@ -38,10 +35,6 @@ public class RiskResult<R extends Risk> {
 
     public MarketEnvId getMarketEnvId() {
         return marketEnvId;
-    }
-
-    public TradePopulationId getTradePopulationId() {
-        return tradePopulationId;
     }
 
     public RiskRunId getRiskRunId() {
