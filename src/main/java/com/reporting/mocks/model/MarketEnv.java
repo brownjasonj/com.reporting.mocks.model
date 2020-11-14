@@ -41,4 +41,8 @@ public class MarketEnv {
     public Date getTimeStamp() {
         return this.timeStamp;
     }
+
+    public boolean equal(MarketEnv marketEnv) {
+        return this.marketEnvId.getId().compareTo(marketEnv.getId().getId()) == 0;
+    }
 }
