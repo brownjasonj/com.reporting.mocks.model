@@ -4,6 +4,16 @@ import com.reporting.mocks.model.id.MarketEnvId;
 import com.reporting.mocks.model.trade.Tcn;
 import com.reporting.mocks.model.underlying.Underlying;
 
+/*
+    Delta (Δ) represents the rate of change between the option's price
+    and a $1 change in the underlying asset's price. In other words, the
+    price sensitivity of the option is relative to the underlying asset.
+    Delta of a call option has a range between zero and one, while the delta
+    of a put option has a range between zero and negative one. For example,
+    assume an investor is long a call option with a delta of 0.50. Therefore,
+    if the underlying stock increases by $1, the option's price would
+    theoretically increase by 50 cents.
+ */
 public class Delta extends Risk {
     private Underlying underlying;
     protected Double value;
