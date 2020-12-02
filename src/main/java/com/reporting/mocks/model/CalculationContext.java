@@ -4,6 +4,9 @@ import com.reporting.mocks.model.id.CalculationContextId;
 import com.reporting.mocks.model.id.MarketEnvId;
 import com.reporting.mocks.model.risks.RiskType;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,18 +18,18 @@ import java.util.Map;
     risk.
  */
 public class CalculationContext {
+    protected Instant timeStamp;
     protected PricingGroup pricingGroup;
     protected CalculationContextId calculationContextId;
-    protected Date timeStamp;
     protected Map<RiskType, MarketEnvId> markets;
 
     public CalculationContext() {
     }
 
     public CalculationContext(PricingGroup pricingGroup) {
+        this.timeStamp = Instant.now(Clock.system(ZoneOffset.UTC));
         this.pricingGroup = pricingGroup;
         this.calculationContextId = new CalculationContextId(pricingGroup.getName());
-        this.timeStamp = new Date();
         this.markets = new HashMap<>();
     }
 
@@ -50,7 +53,7 @@ public class CalculationContext {
 
     }
 
-    public Date getTimeStamp() {
+    public Instant getTimeStamp() {
         return timeStamp;
     }
 

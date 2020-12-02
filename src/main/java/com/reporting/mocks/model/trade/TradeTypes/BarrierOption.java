@@ -6,13 +6,13 @@ import com.reporting.mocks.model.trade.TradeKind;
 import com.reporting.mocks.model.trade.TradeType;
 import com.reporting.mocks.model.underlying.Underlying;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
 public class BarrierOption extends Trade {
     private Underlying underlying2;
-    private Date expiryDate;
+    private Instant expiryDate;
     private Double strike;
     private Double barrier;
 
@@ -25,7 +25,7 @@ public class BarrierOption extends Trade {
                             Double quantity,
                             Underlying underlying1,
                             Underlying underlying2,
-                            Date expiryDate,
+                            Instant expiryDate,
                             Double strike,
                             Double barrier) {
         super(TradeKind.Any, TradeType.BarrierOption, tcn, book, quantity, underlying1);
@@ -39,7 +39,7 @@ public class BarrierOption extends Trade {
                          Double quantity,
                          Underlying underlying1,
                          Underlying underlying2,
-                         Date expiryDate,
+                         Instant expiryDate,
                          Double strike,
                          Double barrier) {
         this(book, new Tcn(), quantity, underlying1, underlying2, expiryDate, strike, barrier);
@@ -71,7 +71,7 @@ public class BarrierOption extends Trade {
         return underlying2;
     }
 
-    public Date getExpiryDate() {
+    public Instant getExpiryDate() {
         return expiryDate;
     }
 
@@ -88,8 +88,8 @@ public class BarrierOption extends Trade {
     }
 
     @Override
-    public boolean hasExpired(Date asOf) {
-        Date expiryDate = this.getExpiryDate();
+    public boolean hasExpired(Instant asOf) {
+        Instant expiryDate = this.getExpiryDate();
         return expiryDate.compareTo(asOf) <= 0;
     }
 

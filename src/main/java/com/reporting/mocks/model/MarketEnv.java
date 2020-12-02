@@ -2,21 +2,20 @@ package com.reporting.mocks.model;
 
 import com.reporting.mocks.model.id.MarketEnvId;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 public class MarketEnv {
-    protected Date timeStamp;
+    protected Instant timeStamp;
     protected MarketEnvId marketEnvId;
-    protected Date asOf;
+    protected Instant asOf;
     protected PricingGroup pricingGroup;
     protected DataMarkerType type;
 
     public MarketEnv(PricingGroup pricingGroup, DataMarkerType type, int dayAdvance) {
-        this.timeStamp = new Date();
+        this.timeStamp = Instant.now(Clock.system(ZoneOffset.UTC));
         this.marketEnvId= new MarketEnvId(pricingGroup.getName());
-        this.asOf = Date.from(LocalDate.now().plusDays(dayAdvance).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        this.asOf = Clock.system(ZoneOffset.UTC).instant().plus(dayAdvance, ChronoUnit.DAYS);
         this.pricingGroup = pricingGroup;
         this.type = type;
     }
@@ -26,7 +25,7 @@ public class MarketEnv {
 
     public MarketEnvId getId() { return this.marketEnvId; }
 
-    public Date getAsOf() {
+    public Instant getAsOf() {
         return asOf;
     }
 
@@ -38,7 +37,7 @@ public class MarketEnv {
         return type;
     }
 
-    public Date getTimeStamp() {
+    public Instant getTimeStamp() {
         return this.timeStamp;
     }
 

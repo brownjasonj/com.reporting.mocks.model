@@ -6,14 +6,14 @@ import com.reporting.mocks.model.trade.TradeKind;
 import com.reporting.mocks.model.trade.TradeType;
 import com.reporting.mocks.model.underlying.Underlying;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Swap extends Trade {
     private Underlying underlying2;
-    private Date nearSettlementDate;
-    private Date farSettlementDate;
+    private Instant nearSettlementDate;
+    private Instant farSettlementDate;
     private Double price;
 
     public Swap() {
@@ -26,8 +26,8 @@ public class Swap extends Trade {
             Double quantity,
             Underlying underlying1,
             Underlying underlying2,
-            Date nearSettlementDate,
-            Date farSettlementDate,
+            Instant nearSettlementDate,
+            Instant farSettlementDate,
             Double price) {
         super(TradeKind.Any, TradeType.Swap, tcn, book, quantity, underlying1);
         this.underlying2 = underlying2;
@@ -41,8 +41,8 @@ public class Swap extends Trade {
             Double quantity,
             Underlying underlying1,
             Underlying underlying2,
-            Date nearSettlementDate,
-            Date farSettlementDate,
+            Instant nearSettlementDate,
+            Instant farSettlementDate,
             Double price
             ) {
         this(book, new Tcn(), quantity, underlying1, underlying2, nearSettlementDate, farSettlementDate, price);
@@ -74,11 +74,11 @@ public class Swap extends Trade {
         return underlying2;
     }
 
-    public Date getNearSettlementDate() {
+    public Instant getNearSettlementDate() {
         return nearSettlementDate;
     }
 
-    public Date getFarSettlementDate() {
+    public Instant getFarSettlementDate() {
         return farSettlementDate;
     }
 
@@ -91,8 +91,8 @@ public class Swap extends Trade {
     }
 
     @Override
-    public boolean hasExpired(Date asOf) {
-        Date expiryDate = this.getFarSettlementDate();
+    public boolean hasExpired(Instant asOf) {
+        Instant expiryDate = this.getFarSettlementDate();
         return expiryDate.compareTo(asOf) <= 0;
     }
 

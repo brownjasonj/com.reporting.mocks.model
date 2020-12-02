@@ -6,13 +6,14 @@ import com.reporting.mocks.model.trade.TradeKind;
 import com.reporting.mocks.model.trade.TradeType;
 import com.reporting.mocks.model.underlying.Underlying;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Forward extends Trade {
     private Underlying underlying2;
-    private Date settlementDate;
+    private Instant settlementDate;
     private Double price;
 
     public Forward() {
@@ -25,7 +26,7 @@ public class Forward extends Trade {
             Double underlying1Amount,
             Underlying underlying1,
             Underlying underlying2,
-            Date settlementDate,
+            Instant settlementDate,
             Double price) {
         super(TradeKind.Any, TradeType.Forward, tcn, book, underlying1Amount, underlying1);
         this.underlying2 = underlying2;
@@ -37,7 +38,7 @@ public class Forward extends Trade {
                    Double underlying1Amount,
                    Underlying underlying1,
                    Underlying underlying2,
-                   Date settlementDate,
+                   Instant settlementDate,
                    Double price) {
         this(book, new Tcn(), underlying1Amount, underlying1, underlying2, settlementDate, price);
     }
@@ -61,7 +62,7 @@ public class Forward extends Trade {
         return underlying2;
     }
 
-    public Date getSettlementDate() {
+    public Instant getSettlementDate() {
         return settlementDate;
     }
 
@@ -74,8 +75,8 @@ public class Forward extends Trade {
     }
 
     @Override
-    public boolean hasExpired(Date asOf) {
-        Date expiryDate = this.getSettlementDate();
+    public boolean hasExpired(Instant asOf) {
+        Instant expiryDate = this.getSettlementDate();
         return expiryDate.compareTo(asOf) <= 0;
     }
 

@@ -6,13 +6,14 @@ import com.reporting.mocks.model.trade.TradeKind;
 import com.reporting.mocks.model.trade.TradeType;
 import com.reporting.mocks.model.underlying.Underlying;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Spot extends Trade {
     private Underlying underlying2;
-    private Date settlementDate;
+    private Instant settlementDate;
     private Double price;
 
     public Spot() {
@@ -25,7 +26,7 @@ public class Spot extends Trade {
             Double underlyingAmount1,
             Underlying underlying1,
             Underlying underlying2,
-            Date settlementDate,
+            Instant settlementDate,
             Double price
     ){
         super(TradeKind.Any, TradeType.Spot, tcn, book, underlyingAmount1, underlying1);
@@ -33,7 +34,7 @@ public class Spot extends Trade {
         this.settlementDate = settlementDate;
         this.price = price;
     }
-    public Spot(String book, Double underlyingAmount1, Underlying underlying1, Underlying underlying2, Date settlementDate, Double price) {
+    public Spot(String book, Double underlyingAmount1, Underlying underlying1, Underlying underlying2, Instant settlementDate, Double price) {
         this(book, new Tcn(), underlyingAmount1, underlying1, underlying2, settlementDate, price);
     }
 
@@ -63,7 +64,7 @@ public class Spot extends Trade {
         return underlying2;
     }
 
-    public Date getSettlementDate() {
+    public Instant getSettlementDate() {
         return settlementDate;
     }
 
@@ -76,8 +77,8 @@ public class Spot extends Trade {
     }
 
     @Override
-    public boolean hasExpired(Date asOf) {
-        Date expiryDate = this.getSettlementDate();
+    public boolean hasExpired(Instant asOf) {
+        Instant expiryDate = this.getSettlementDate();
         return expiryDate.compareTo(asOf) <= 0;
     }
 

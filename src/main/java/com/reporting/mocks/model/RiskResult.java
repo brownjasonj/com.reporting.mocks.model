@@ -1,14 +1,15 @@
 package com.reporting.mocks.model;
 
-import java.util.Date;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneOffset;
 
 import com.reporting.mocks.model.id.MarketEnvId;
 import com.reporting.mocks.model.id.RiskRunId;
-import com.reporting.mocks.model.id.TradePopulationId;
 import com.reporting.mocks.model.risks.Risk;
 
 public class RiskResult<R extends Risk> {
-    protected Date timeStamp;
+    protected Instant timeStamp;
     protected MarketEnvId marketEnvId;
     protected RiskRunId riskRunId;
     protected int fragmentCount;
@@ -24,7 +25,7 @@ public class RiskResult<R extends Risk> {
                          int fragmentNo,
                          R risk,
                          boolean isDeleteEvent) {
-        this.timeStamp = new Date();
+        this.timeStamp = Instant.now(Clock.system(ZoneOffset.UTC));
         this.riskRunId = riskRunId;
         this.marketEnvId = marketEnvId;
         this.fragmentCount = fragmentCount;
@@ -57,7 +58,7 @@ public class RiskResult<R extends Risk> {
         return isDeleteEvent;
     }
 
-    public Date getTimeStamp() {
+    public Instant getTimeStamp() {
         return this.timeStamp;
     }
 }

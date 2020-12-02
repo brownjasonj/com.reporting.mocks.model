@@ -3,6 +3,7 @@ package com.reporting.mocks.model.trade;
 
 import com.reporting.mocks.model.underlying.Underlying;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
 
@@ -71,7 +72,7 @@ public class Trade {
         return underlying1;
     }
 
-    public boolean hasExpired(Date asOf) { return false; }
+    public boolean hasExpired(Instant asOf) { return false; }
 
     public Map<String, Double> getNotionals() { return null; }
 

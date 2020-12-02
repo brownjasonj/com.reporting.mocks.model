@@ -3,12 +3,13 @@ package com.reporting.mocks.model.trade.TradeTypes;
 import com.reporting.mocks.model.trade.*;
 import com.reporting.mocks.model.underlying.Underlying;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Payment extends Trade {
-    private Date settlementDate;
+    private Instant settlementDate;
 
     public Payment() {
         super();
@@ -19,13 +20,13 @@ public class Payment extends Trade {
             Tcn tcn,
             Double underlyingAmount1,
             Underlying underlying1,
-            Date settlementDate
+            Instant settlementDate
     ) {
         super(TradeKind.Any, TradeType.Payment, tcn, book, underlyingAmount1, underlying1);
         this.settlementDate = settlementDate;
     }
 
-    public Payment(String book, Double underlyingAmount1, Underlying underlying1, Date settlementDate) {
+    public Payment(String book, Double underlyingAmount1, Underlying underlying1, Instant settlementDate) {
         this(book, new Tcn(), underlyingAmount1, underlying1, settlementDate);
     }
 
@@ -42,13 +43,13 @@ public class Payment extends Trade {
                 this.getSettlementDate());
     }
 
-    public Date getSettlementDate() {
+    public Instant getSettlementDate() {
         return settlementDate;
     }
 
     @Override
-    public boolean hasExpired(Date asOf) {
-        Date expiryDate = this.getSettlementDate();
+    public boolean hasExpired(Instant asOf) {
+        Instant expiryDate = this.getSettlementDate();
         return expiryDate.compareTo(asOf) <= 0;
     }
 
