@@ -6,9 +6,9 @@
 
   <groupId>com.reporting.mocks</groupId>
   <artifactId>model</artifactId>
-  <version>0.19.3</version>
+  <version>0.20.0</version>
 
-  <name>model</name>
+  <name>com.reporting.mocks.model</name>
   <!-- FIXME change it to the project's website -->
   <url>https://github.com/brownjasonj/com.reporting.mocks.model.git</url>
 
